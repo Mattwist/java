@@ -1,0 +1,16 @@
+package ru.mirea.lab4;
+
+public class Processor {
+    private final String model;
+    private final double frequency;
+    private final int cores;
+
+    public Processor(String model, double frequency, int cores) {
+        this.model = model;
+        this.frequency = frequency;
+        this.cores = cores;
+    }
+
+    @Override
+    public String toString() { return "Processor[" + model + ", " + frequency + " ГГц, " + cores + " ядер]"; }
+}
