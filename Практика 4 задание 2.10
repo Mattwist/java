@@ -1,0 +1,17 @@
+package ru.mirea.lab4;
+
+public class Task2 {
+    public static void main(String[] args) {
+        Clothes[] clothes = {
+                new TShirt(Size.S, 1500, "белая"),
+                new Pants(Size.M, 3500, "чёрные"),
+                new Skirt(Size.XS, 2500, "красная"),
+                new Tie(Size.L, 1200, "синий"),
+                new TShirt(Size.XXS, 900, "детская")
+        };
+
+        Atelier.dressWomen(clothes);
+        System.out.println();
+        Atelier.dressMan(clothes);
+    }
+}
