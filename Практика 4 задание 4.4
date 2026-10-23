@@ -1,0 +1,16 @@
+package ru.mirea.lab4;
+
+public class Monitor {
+    private final String model;
+    private final double diagonal;
+    private final int refreshRate;
+
+    public Monitor(String model, double diagonal, int refreshRate) {
+        this.model = model;
+        this.diagonal = diagonal;
+        this.refreshRate = refreshRate;
+    }
+
+    @Override
+    public String toString() { return "Monitor[" + model + ", " + diagonal + "\", " + refreshRate + " Гц]"; }
+}
