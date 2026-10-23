@@ -1,0 +1,13 @@
+package ru.mirea.lab4;
+
+public class Task4 {
+    public static void main(String[] args) {
+        Computer pc = new Computer(
+                ComputerBrand.ASUS,
+                new Processor("Intel Core i7-12700", 3.6, 12),
+                new Memory(32, "DDR5"),
+                new Monitor("Dell UltraSharp", 27.0, 144)
+        );
+        System.out.println(pc);
+    }
+}
