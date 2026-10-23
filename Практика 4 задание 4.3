@@ -1,0 +1,14 @@
+package ru.mirea.lab4;
+
+public class Memory {
+    private final int sizeGB;
+    private final String type;
+
+    public Memory(int sizeGB, String type) {
+        this.sizeGB = sizeGB;
+        this.type = type;
+    }
+
+    @Override
+    public String toString() { return "Memory[" + sizeGB + " GB " + type + "]"; }
+}
