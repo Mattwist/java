@@ -1,0 +1,124 @@
+// Задание 1
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class Task1 {
+    public static void main(String[] args) {
+        String surname = "Иванов"; // Впишите свою фамилию
+
+        // Дата получения (для примера возьмем 5 дней назад)
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, -5);
+        Date dateGet = cal.getTime();
+
+        // Дата сдачи (текущая)
+        Date dateSubmit = new Date();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, d MMMM yyyy, HH:mm:ss");
+        
+        System.out.println("Разработчик: " + surname);
+        System.out.println("Дата получения: " + sdf.format(dateGet));
+        System.out.println("Дата сдачи:     " + sdf.format(dateSubmit));
+    }
+}
+// Задание 2
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Task2 {
+    public static void main(String[] args) throws ParseException {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите дату в формате дд.ММ.гггг: ");
+        String input = sc.nextLine();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        Date userDate = sdf.parse(input);
+        Date currentDate = new Date();
+
+        System.out.println("Текущая дата: " + sdf.format(currentDate));
+        
+        if (userDate.before(currentDate)) {
+            System.out.println("Введенная дата находится в ПРОШЛОМ.");
+        } else if (userDate.after(currentDate)) {
+            System.out.println("Введенная дата находится в БУДУЩЕМ.");
+        } else {
+            System.out.println("Введенная дата СОВПАДАЕТ с текущей.");
+        }
+    }
+}
+// Задание 3 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+class Student {
+    String name;
+    Date birthDate;
+
+    public Student(String name, Date birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
+    }
+
+    public String getFormattedDate(String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(birthDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Студент: " + name + ", Дата рождения (короткая): " + getFormattedDate("dd.MM.yy");
+    }
+}
+
+public class Task3 {
+    public static void main(String[] args) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2003, Calendar.MARCH, 15); // 15 марта 2003 года
+        Date bd = cal.getTime();
+
+        Student st = new Student("Петров Петр", bd);
+
+        System.out.println(st.toString());
+        System.out.println("Полный формат:  " + st.getFormattedDate("d MMMM yyyy 'года'"));
+        System.out.println("Средний формат: " + st.getFormattedDate("dd.MM.yyyy"));
+    }
+}
+// Задание 4
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Task4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Введите данные для создания даты:");
+        System.out.print("Год: ");
+        int year = sc.nextInt();
+        System.out.print("Месяц (1-12): ");
+        int month = sc.nextInt() - 1; // В Calendar месяцы с 0
+        System.out.print("Число: ");
+        int day = sc.nextInt();
+        System.out.print("Часы: ");
+        int hour = sc.nextInt();
+        System.out.print("Минуты: ");
+        int minute = sc.nextInt();
+
+        // Создание Calendar
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day, hour, minute, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        
+        // Создание Date из Calendar
+        Date date = cal.getTime();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        System.out.println("Создан объект Date: " + sdf.format(date));
+        System.out.println("Создан объект Calendar: " + cal.getTime().toString());
+    }
+}
